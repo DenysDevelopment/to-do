@@ -1,0 +1,135 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+body {
+  font-family: sans-serif;
+}
+.task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 13px;
+}
+.task__body {
+  background: #ffffff;
+  box-shadow: 0px 4px 22px 7px rgba(0, 0, 0, 0.25);
+  min-height: 100px;
+  max-width: 700px;
+  min-width: 600px;
+  padding: 20px 10px;
+}
+@media screen and (max-width: 650px) {
+  .task__body {
+    min-width: 100%;
+  }
+}
+
+.task__add {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+.task__input {
+  display: block;
+  font-size: 14px;
+  color: #000;
+  height: 50px;
+  padding-left: 20px;
+  outline: none;
+  width: 70%;
+  border: 2px solid #9db7f0;
+  border-right: 1px solid transparent;
+}
+.task__input::placeholder {
+  color: #767676;
+}
+.task__out-tasks {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.task__btn {
+  display: block;
+  width: 30%;
+  height: 50px;
+  background: transparent;
+  border: 0;
+  text-align: center;
+  border: 2px solid #074ee8;
+  border-left: 0px solid transparent;
+  box-sizing: border-box;
+  border-radius: 0px 4px 4px 0px;
+  transition: all 0.3s;
+}
+.task__btn:hover {
+  background: linear-gradient(-90deg, #074ee8, #fff);
+  color: #fff;
+  width: 50%;
+}
+.task__btn:focus {
+  outline: 0;
+}
+.task__card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 10px;
+  background: rgba(0, 0, 0, 0.041);
+}
+.task__done {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #082461;
+  transition: all 0.2s;
+  background: url(done-icon.svg) no-repeat center / 0px;
+  cursor: pointer;
+}
+.task__done:hover {
+  background-size: 17px;
+}
+.task__text {
+  width: 80%;
+  text-align: left;
+  margin: 0 auto;
+}
+.task__remove {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #082461;
+  background: url(close-icon.svg) no-repeat center / 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.task__remove:hover {
+  background-color: #c5d7ff;
+  transform: scale(1.1);
+}
+
+.task__card.done p {
+  text-decoration: line-through;
+}
+
+.task__card.done .task__done {
+  background-size: 17px;
+}
+
+.task__color {
+  display: block;
+  background: transparent;
+  border: 0;
+  width: 90%;
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.error {
+  border-bottom: 3px solid red;
+}
