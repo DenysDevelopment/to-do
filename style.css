@@ -100,6 +100,9 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
+.task__done {
+  background-size: 17px;
+}
 @media screen and (min-width: 992px) {
   .task__remove:hover {
     background-color: #c5d7ff;
