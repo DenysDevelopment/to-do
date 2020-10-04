@@ -64,6 +64,7 @@ body {
   box-sizing: border-box;
   border-radius: 0px 4px 4px 0px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .task__btn:focus {
@@ -87,9 +88,11 @@ body {
 }
 
 .task__text {
-  width: 80%;
+  width: 95%;
   text-align: left;
   margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .task__remove {
   width: 30px;
@@ -137,13 +140,19 @@ body {
 }
 
 .error {
-  border-bottom: 3px solid red;
+  border: 3px solid red;
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 500px) {
   .task__text {
-    width: 70%;
+    width: 90%;
   }
+}
+@media screen and (max-width: 992px) {
   .task__done {
     background-size: 17px;
   }

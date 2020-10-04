@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,15 +14,22 @@
             class="task__input"
             type="text"
             placeholder="Добавить задачу"
+            maxlength="150"
           />
           <input class="task__btn" type="button" value="Добавить" />
         </div>
-        <h2 class="title-color">Быбрать цвет</h2>
-        <input class="task__color" type="color" />
         <div class="task__out-tasks"></div>
       </div>
     </section>
-    <a href="log.html">Log version</a>
+
+    <footer>
+      <h2>Изменения</h2>
+      <ul>
+        <li>Удаления карточек</li>
+        <li>Пустая строка после нажатии на кнопку</li>
+        <li>Конпка готово</li>
+      </ul>
+    </footer>
     <script src="index.js"></script>
   </body>
 </html>

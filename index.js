@@ -1,34 +1,76 @@
-const taskInput = document.querySelector(".task__input");
-const taskCard = document.querySelector(".task__card");
-const taskBtn = document.querySelector(".task__btn");
-const taskOutTasks = document.querySelector(".task__out-tasks");
-const taskColor = document.querySelector(".task__color");
+"use strict";
+const addMessage = document.querySelector(".task__input");
+const addButton = document.querySelector(".task__btn");
+const todo = document.querySelector(".task__out-tasks");
 
-const addTask = () => {
-  if (taskInput.value === "") {
-    console.log("foo");
-  } else {
-    const colorCard = taskColor.value;
+let count = 2000;
 
-    localStorage.setItem(
-      "addTask",
-      (taskOutTasks.innerHTML += `
-        <div class="task__card" style="border-left: 2px solid ${colorCard}">
-          <div class="task__done"></div>
-          <p class="task__text">
-            ${taskInput.value}
-          </p>
-          <div class="task__remove"></div>
-        </div>
-      `)
-    );
+let todoList = [];
 
-    taskInput.value = "";
+if (localStorage.getItem("todo")) {
+  todoList = JSON.parse(localStorage.getItem("todo"));
+  displayMassages();
+}
+
+function addTask() {
+  const newTodo = {
+    todo: addMessage.value,
+    id: todoList.length,
+  };
+
+  if (!addMessage.value == "") {
+    todoList.push(newTodo);
+    displayMassages();
+    localStorage.setItem("todo", JSON.stringify(todoList));
+
+    addMessage.value = "";
   }
-};
+}
 
-const getItemLocal = localStorage.getItem("addTask");
+addButton.addEventListener("click", addTask);
 
-taskOutTasks.innerHTML = getItemLocal;
+function displayMassages() {
+  let displayMassage = "";
+  todoList.forEach(function (item, i) {
+    displayMassage += `
+    <div class="task__card" id="item__${i}">
+      <p class="task__text">${item.todo}</p>
+      <div class="task__remove" id="${i}"></div>
+    </div>
+    `;
 
-taskBtn.addEventListener("click", addTask);
+    todo.innerHTML = displayMassage;
+  });
+
+  if (todoList.length >= 100) {
+    addMessage.classList.add("error");
+  } else {
+    addMessage.classList.remove("error");
+  }
+
+  removeTask();
+}
+
+function removeTask() {
+  const removeBtn = document.querySelectorAll(".task__remove");
+
+  removeBtn.forEach(function (index, i) {
+    index.addEventListener("click", function (e) {
+      if (e.target.id == i) {
+        localStorage.setItem("todo", JSON.stringify(todoList.splice([i], 1)));
+        displayMassages();
+      }
+    });
+  });
+}
+
+addMessage.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    addTask();
+  }
+});
+
+setInterval(() => {
+  localStorage.setItem("todo", JSON.stringify(todoList.splice(1, 1)));
+  displayMassages();
+}, cou
