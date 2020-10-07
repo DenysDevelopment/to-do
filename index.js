@@ -70,7 +70,3 @@ addMessage.addEventListener("keypress", function (e) {
   }
 });
 
-setInterval(() => {
-  localStorage.setItem("todo", JSON.stringify(todoList.splice(1, 1)));
-  displayMassages();
-}, count);
